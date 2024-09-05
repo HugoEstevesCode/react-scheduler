@@ -19,7 +19,12 @@ export const splitToPages = (
 
   if (projectsPerPerson.length > recordsThreshold) {
     projectsPerPerson.forEach((projects, i) => {
-      const newItem = { id: data[i].id, label: data[i].label, data: projects };
+      const newItem = {
+        id: data[i].id,
+        label: data[i].label,
+        data: projects,
+        ...(data[i].numberOfLines ? { numberOfLines: data[i].numberOfLines } : {})
+      };
 
       if (pageRecords >= recordsThreshold) {
         pages.push(singlePage);
@@ -38,6 +43,9 @@ export const splitToPages = (
         const newItem = {
           id: data[i + leftIndex].id,
           label: data[i + leftIndex].label,
+          ...(data[i + leftIndex].numberOfLines
+            ? { numberOfLines: data[i + leftIndex].numberOfLines }
+            : {}),
           data: projects
         };
         singlePage.push(newItem);
@@ -49,7 +57,12 @@ export const splitToPages = (
     return pages;
   }
   projectsPerPerson.forEach((projects, i) => {
-    const newItem = { id: data[i].id, label: data[i].label, data: projects };
+    const newItem = {
+      id: data[i].id,
+      label: data[i].label,
+      ...(data[i].numberOfLines ? { numberOfLines: data[i].numberOfLines } : {}),
+      data: projects
+    };
     singlePage.push(newItem);
   });
 

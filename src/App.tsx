@@ -13,7 +13,7 @@ function App() {
     projectsPerYear: 5,
     yearsCovered: 0,
     startDate: undefined,
-    maxRecordsPerPage: 50,
+    maxRecordsPerPage: 5000,
     isFullscreen: true
   });
 
@@ -62,7 +62,7 @@ function App() {
         <Scheduler
           startDate={values.startDate ? new Date(values.startDate).toISOString() : undefined}
           onRangeChange={handleRangeChange}
-          data={filteredData}
+          data={mocked}
           isLoading={false}
           onTileClick={handleTileClick}
           onFilterData={handleFilterData}
@@ -75,7 +75,7 @@ function App() {
             startDate={values.startDate ? new Date(values.startDate).toISOString() : undefined}
             onRangeChange={handleRangeChange}
             isLoading={false}
-            data={filteredData}
+            data={mocked}
             onTileClick={handleTileClick}
             onFilterData={handleFilterData}
             onItemClick={(data) => console.log("clicked: ", data)}

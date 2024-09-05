@@ -54,7 +54,8 @@ export const generateProjects = (
         title,
         subtitle: getRandomWords(),
         description: getRandomWords(amountOfDscWords),
-        bgColor
+        bgColor,
+        line: projectIndex % 2 === 0 ? 0 : 1
       });
     }
   }
@@ -84,7 +85,8 @@ export const createMockData = (
         title,
         subtitle: getRandomWords()
       },
-      data
+      data,
+      numberOfLines: Math.max(...data.map((project) => project.line).map(Number)) + 1
     };
     schedulerData.push(item);
   }

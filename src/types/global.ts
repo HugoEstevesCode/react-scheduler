@@ -64,6 +64,7 @@ export type SchedulerRow = {
   id: string;
   label: SchedulerRowLabel;
   data: SchedulerProjectData[];
+  numberOfLines?: number;
 };
 
 export type SchedulerItemClickData = Omit<SchedulerRow, "data">;
@@ -74,6 +75,7 @@ export type PaginatedSchedulerRow = {
   id: string;
   label: SchedulerRowLabel;
   data: SchedulerProjectData[][];
+  numberOfLines?: number;
 };
 
 export type SchedulerRowLabel = {
@@ -114,6 +116,7 @@ export type SchedulerProjectData = {
    * Background color of the tile, given in rgb color model. If not given, default color (rgb(114, 141,226 )) is set. Optional
    */
   bgColor?: string;
+  line?: number;
 };
 
 export type Day = {

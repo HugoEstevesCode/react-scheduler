@@ -147,7 +147,10 @@ export const Calendar: FC<CalendarProps> = ({
           <Grid
             data={page}
             zoom={zoom}
-            rows={totalRowsPerPage}
+            rows={
+              page.reduce((acc, person) => acc + (person?.numberOfLines || 0), 0) ??
+              totalRowsPerPage
+            }
             ref={gridRef}
             onTileClick={onTileClick}
           />
